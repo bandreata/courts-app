@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -39,4 +43,29 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* Scrollbar for WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px;               /* largura */
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;       /* bg-gray-100 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;       /* text-gray-400 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;       /* text-gray-500 */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f3f4f6;
 }
