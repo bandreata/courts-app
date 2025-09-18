@@ -67,7 +67,6 @@ function normalizeAll(raw: any) {
       courts: Array.isArray(state.courts) ? state.courts.map(normalizeCourtItem) : [],
       intimacoes: Array.isArray(state.intimacoes) ? state.intimacoes.map(normalizeCourtItem) : [],
       administrative: Array.isArray(state.administrative) ? state.administrative.map(normalizeCourtItem) : [],
-      systems: Array.isArray(state.systems) ? state.systems.map(normalizeCourtItem) : [],   // 👈 novo
     };
   }
   return out;
@@ -154,7 +153,6 @@ export default function Page() {
   const courts = filterItems(selected?.courts);
   const intimacoes = filterItems(selected?.intimacoes);
   const administrative = filterItems(selected?.administrative);
-  const systems = filterItems(selected?.systems);
 
   return (
     <div className="mx-auto w-full px-3 sm:px-4 py-4 md:py-6">
@@ -240,7 +238,6 @@ export default function Page() {
           <DetailsSection title="Diários de Justiça" items={courts} />
           <DetailsSection title="Intimação Eletrônica" items={intimacoes} />
           <DetailsSection title="Administrativo / Outros Poderes" items={administrative} />
-          <DetailsSection title="Sistemas" items={systems} />
         </section>
       </div>
     </div>
