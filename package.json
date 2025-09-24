@@ -6,7 +6,9 @@
     "dev": "cross-env NEXT_DISABLE_TURBOPACK=1 next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "next build",
+    "serve-static": "npx serve out"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.13",

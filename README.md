@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aplicativo de Diários de Justiça e Intimação Eletrônica
 
-## Getting Started
+Este é um projeto [Next.js](https://nextjs.org) configurado para gerar uma versão estática que pode ser instalada em qualquer servidor web sem depender do NPM.
 
-First, run the development server:
+## Desenvolvimento
+
+Para executar o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Gerando a versão estática
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para gerar uma versão estática do site que pode ser hospedada em qualquer servidor web:
 
-## Learn More
+```bash
+npm run export
+```
 
-To learn more about Next.js, take a look at the following resources:
+Isso irá criar uma pasta `out` com todos os arquivos estáticos necessários para hospedar o site.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instalando em um site externo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Após gerar a versão estática, siga os passos abaixo para instalar o site em um servidor externo:
 
-## Deploy on Vercel
+### Opção 1: Upload direto para o servidor
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Copie todo o conteúdo da pasta `out` para o diretório do seu servidor web (ex: pasta raíz do Apache, Nginx, etc.)
+2. Nenhuma configuração adicional é necessária, já que todos os arquivos são estáticos (HTML, CSS, JavaScript).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Opção 2: Hospedar em um subdiretório
+
+Se você precisa hospedar o site em um subdiretório (ex: `seu-site.com/intimacao/`), faça as seguintes alterações:
+
+1. Edite o arquivo `next.config.js` e descomente a linha `basePath`:
+
+```js
+basePath: '/intimacao', // Substitua pelo seu subdiretório
+```
+
+2. Execute novamente o comando `npm run export`
+3. Copie o conteúdo da pasta `out` para o subdiretório correspondente no seu servidor
+
+### Requisitos do servidor
+
+- Qualquer servidor web básico (Apache, Nginx, IIS, etc.)
+- Não é necessário Node.js ou qualquer runtime no servidor
+- Certifique-se de que o arquivo `courts.json` esteja na pasta `/courts.json` relativa à raiz do site
+
+### Atualizações
+
+Para atualizar o site, simplesmente gere uma nova versão estática e substitua os arquivos no servidor.
+
